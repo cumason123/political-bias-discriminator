@@ -1,6 +1,5 @@
 make:
-	g++ -c model.cpp -o model.o
-	g++ -o model model.o -L -ltwitcurl
+	g++ model.cpp -o model -ltwitcurl
 image:
 	docker build -f Dockerfile .
 container:
