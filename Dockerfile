@@ -10,6 +10,8 @@ WORKDIR /usr/src/political-bias-discriminator
 # Define Environment Variables
 ENV TWITTER_PASSWORD=$TWITTER_PASSWORD
 ENV TWITTER_USERNAME=$TWITTER_USERNAME
+ENV TWITTER_API_KEY=$TWITTER_API_KEY
+ENV TWITTER_API_SECRET=$TWITTER_API_SECRET
 
 # Build libtwitcurl Libraries
 RUN git clone https://github.com/swatkat/twitcurl
@@ -24,6 +26,9 @@ RUN tar xvzf libtensorflow-cpu-linux-x86_64-1.15.0.tar.gz
 RUN cp -r lib/* /usr/lib && ldconfig
 RUN rm -r THIRD_PARTY_TF_C_LICENSES LICENSE lib libtensorflow-cpu-linux-x86_64-1.15.0.tar.gz
 
+# Download IBC
+RUN mkdir ibc && cd ibc && wget https://people.cs.umass.edu/~miyyer/data/sample_ibc.tar.gz
+RUN tar xvzf sample_ibc.tar.gz && rm sample_ibc.tar.gz && cd ..
 # Install tools and export paths
 RUN apt-get update
 RUN apt-get install nano -y
