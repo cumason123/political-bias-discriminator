@@ -28,7 +28,8 @@ RUN rm -r THIRD_PARTY_TF_C_LICENSES LICENSE lib libtensorflow-cpu-linux-x86_64-1
 
 # Download IBC
 RUN mkdir ibc && cd ibc && wget https://people.cs.umass.edu/~miyyer/data/sample_ibc.tar.gz
-RUN tar xvzf sample_ibc.tar.gz && rm sample_ibc.tar.gz && cd ..
+RUN tar xvzf ibc/sample_ibc.tar.gz && rm ibc/sample_ibc.tar.gz
+
 # Install tools and export paths
 RUN apt-get update
 RUN apt-get install nano -y
