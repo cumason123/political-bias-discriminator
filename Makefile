@@ -1,5 +1,5 @@
 make:
-	g++ model.cpp -o model -ltwitcurl
+	g++ model.cpp -I./include -ltwitcurl -ltensorflow -o model
 image:
 	docker build -f Dockerfile .
 container:

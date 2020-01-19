@@ -18,6 +18,12 @@ RUN cp twitcurl/libtwitcurl/libtwitcurl.so.1.0 /usr/lib/libtwitcurl.so.1
 RUN rm -r twitcurl
 RUN ln -s /usr/lib/libtwitcurl.so.1 /usr/lib/libtwitcurl.so
 
+# Setup Tensorflow CPU support
+RUN wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.15.0.tar.gz
+RUN tar xvzf libtensorflow-cpu-linux-x86_64-1.15.0.tar.gz
+RUN cp -r lib/* /usr/lib && ldconfig
+RUN rm -r THIRD_PARTY_TF_C_LICENSES LICENSE lib libtensorflow-cpu-linux-x86_64-1.15.0.tar.gz
+
 # Install tools and export paths
 RUN apt-get update
 RUN apt-get install nano -y
