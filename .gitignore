@@ -119,4 +119,4 @@ $RECYCLE.BIN/
 
 # Allowing twitcurl.lib
 !twitcurl.lib
-
+.env
