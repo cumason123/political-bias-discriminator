@@ -1,10 +1,11 @@
 make:
 	g++ model.cpp -I./include -ltwitcurl -ltensorflow -o model
 image:
-	docker build -f Dockerfile .
+	docker build -t classifier .
 container:
 	docker run \
-	-v "~/workspace/political-bias-discriminator/model.cpp:/usr/src/political-bias-discriminator/model.cpp" \
+	-v "/Users/curtismason/workspace/political-bias-discriminator/model.cpp:/usr/src/political-bias-discriminator/model.cpp" \
+	--env-file .env \
 	-i -t $(image) /bin/bash
 clean:
 	rm *.o

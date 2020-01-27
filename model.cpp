@@ -1,6 +1,7 @@
 #include <twitcurl.h>
 #include <tensorflow/c/c_api.h>
 #include <stdio.h>
+#include <iostream>
 twitCurl oAuthFlow() {
 	twitCurl twit;
 
@@ -46,6 +47,12 @@ twitCurl oAuthFlow() {
 }
 
 int main() {
+	FILE *env = fopen(".env", "r");
+	if (env == NULL) {
+		printf("Please store the following environment variables in a .env file!\n");
+		printf("[TWITTER_USERNAME, TWITTER_PASSWORD, TWITTER_API_KEY, TWITTER_API_SECRET]\n");
+		exit(1);
+	}
 	twitCurl twit = oAuthFlow();
 	printf("Hello from TensorFlow C library version %s\n", TF_Version());
 }
