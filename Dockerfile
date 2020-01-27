@@ -7,12 +7,6 @@ COPY . /usr/src/political-bias-discriminator
 # Specify the working directory
 WORKDIR /usr/src/political-bias-discriminator
 
-# Define Environment Variables
-ENV TWITTER_PASSWORD=$TWITTER_PASSWORD
-ENV TWITTER_USERNAME=$TWITTER_USERNAME
-ENV TWITTER_API_KEY=$TWITTER_API_KEY
-ENV TWITTER_API_SECRET=$TWITTER_API_SECRET
-
 # Build libtwitcurl Libraries
 RUN git clone https://github.com/swatkat/twitcurl
 RUN cd twitcurl/libtwitcurl && make && cd ~
